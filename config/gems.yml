@@ -1,0 +1,21 @@
+# this is optional
+# source: http://local_mirror.example.com 
+# gem_command: 'jruby -S gem'
+gems:
+  - name: rake
+    load: true
+    version: 0.7.3
+  - name: foo_gem
+    version: 0.0.1
+    load: true
+  # - name: postgres
+  # 	# the version to use
+  #   version: '0.7.1'
+  #   # this gem has a specfic source URL
+  #   source: 'http://mongrel.rubyforge.org/releases'
+  #   # this tells us to load not just install
+  #   load: true 
+  #   # any extra config that needs to be passed to gem install
+  #   config: '--with-pgsql-include-dir=/usr/local/pgsql/include --with-pgsql-lib-dir=/usr/local/pgsql/lib' 
+  #   # if the require name is different than the gem name
+  #   require_name: foo-bar
