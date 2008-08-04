@@ -1,32 +1,81 @@
-= gem_tools
+h2. GemTools
 
-* FIX (url)
+http://github.com/UnderpantsGnome/gem_tools-gem/wikis
 
-== DESCRIPTION:
+h3. DESCRIPTION:
 
-FIX (describe your package)
+The gem verison of my lightweight tool to manage gems using a config file, 
+similar to GemInstaller.
 
-== FEATURES/PROBLEMS:
+h3. FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+Doesn't yet work in Windows
 
-== SYNOPSIS:
+h3. SYNOPSIS:
 
-  FIX (code sample of usage)
+I use this to manage gem versions in my apps, it has a rake task to install gems 
+and a load utility to load them on startup.
 
-== REQUIREMENTS:
+Install or update required gems
+<pre><code>
+gem_tools install
+</pre></code>
 
-* FIX (list of requirements)
+Make sure they are loaded with the right versions during startup, by adding the 
+following to your script or environment.rb (Rails)
+<pre><code>
+require 'gem_tools'
+GemTools.load_gems
+</pre></code>
 
-== INSTALL:
+The config file looks like
+<pre><code>
+# These are optional
+:source: http://local_mirror.example.com
+gem_command: 'jruby -S gem'
+:gems:
+  - :name: mongrel
+    :version: "1.0"
+    # this gem has a specfic source URL
+    :source: 'http://mongrel.rubyforge.org/releases'
 
-* FIX (sudo gem install, anything else)
+  - :name: hpricot_scrub
+    :version: '0.3.3'
+    # this tells us to load not just install
+    :load: true 
 
-== LICENSE:
+  - :name: postgres
+    :version: '0.7.1'
+    :load: true
+    # any extra config that needs to be passed to gem install
+    :config: '--with-pgsql-include-dir=/usr/local/pgsql/include 
+      --with-pgsql-lib-dir=/usr/local/pgsql/lib' 
+
+  - :name: rfeedparser_ictv
+    :version: '0.9.932'
+    :load: true
+    # this one has a different load name than the gem name (not a normal need)
+    :require_name: 'rfeedparser'
+</pre></code>
+
+h3. REQUIREMENTS:
+
+None
+
+h3. INSTALL:
+
+sudo gem install gem_tools
+
+h3. TODO
+
+* Write the tests/specs
+* Make it work in Windows
+
+h3. LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2008 FIXME full name
+Copyright (c) 2008 Michael Moen
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
