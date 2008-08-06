@@ -1,11 +1,138 @@
-<html>
-	<head>
-		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-		<title>gem_tools</title>
-		
-	</head>
-	<body id="body">
-		<p>This page has not yet been created for RubyGem <code>gem_tools</code></p>
-		<p>To the developer: To generate it, update website/index.txt and run the rake task <code>website</code> to generate this <code>index.html</code> file.</p>
-	</body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+      gem_tools
+  </title>
+  <script src="javascripts/rounded_corners_lite.inc.js" type="text/javascript"></script>
+<style>
+
+</style>
+  <script type="text/javascript">
+    window.onload = function() {
+      settings = {
+          tl: { radius: 10 },
+          tr: { radius: 10 },
+          bl: { radius: 10 },
+          br: { radius: 10 },
+          antiAlias: true,
+          autoPad: true,
+          validTags: ["div"]
+      }
+      var versionBox = new curvyCorners(settings, document.getElementById("version"));
+      versionBox.applyCornersToAll();
+    }
+  </script>
+</head>
+<body>
+<div id="main">
+
+    <h1>gem_tools</h1>
+    <div id="version" class="clickable" onclick='document.location = "http://rubyforge.org/projects/gem_tools"; return false'>
+      <p>Get Version</p>
+      <a href="http://rubyforge.org/projects/gem_tools" class="numbers">0.0.1</a>
+    </div>
+    <h2>What</h2>
+
+
+	<p>The gem verison of my lightweight tool to manage gems using a config file, 
+similar to GemInstaller.</p>
+
+
+	<h2>Installing</h2>
+
+
+	<p><pre class='syntax'><span class="ident">sudo</span> <span class="ident">gem</span> <span class="ident">install</span> <span class="ident">gem_tools</span></pre></p>
+
+
+	<h2>The basics</h2>
+
+
+	<p>I use this to manage gem versions in my apps, it has a rake task to install gems 
+and a load utility to load them on startup.</p>
+
+
+Install or update required gems
+<pre><code>
+gem_tools install
+</pre></code>
+
+Make sure they are loaded with the right versions during startup, by adding the 
+following to your script or environment.rb (Rails)
+<pre><code>
+require 'gem_tools'
+GemTools.load_gems
+</pre></code>
+
+The config file looks like
+<pre><code>
+# These are optional
+:source: http://local_mirror.example.com
+gem_command: 'jruby -S gem'
+:gems:
+  - :name: mongrel
+    :version: "1.0" 
+    # this gem has a specfic source URL
+    :source: 'http://mongrel.rubyforge.org/releases'
+
+  - :name: hpricot_scrub
+    :version: '0.3.3'
+    # this tells us to load not just install
+    :load: true 
+
+  - :name: postgres
+    :version: '0.7.1'
+    :load: true
+    # any extra config that needs to be passed to gem install
+    :config: '--with-pgsql-include-dir=/usr/local/pgsql/include 
+      --with-pgsql-lib-dir=/usr/local/pgsql/lib' 
+
+  - :name: rfeedparser_ictv
+    :version: '0.9.932'
+    :load: true
+    # this one has a different load name than the gem name (not a normal need)
+    :require_name: 'rfeedparser'
+</pre></code>
+
+	<p>You can fetch the source from either:</p>
+
+
+<pre>git clone git://rubyforge.org/gem_tools.git</pre>
+
+	<ul>
+	<li>github: <a href="http://github.com/UnderpantsGnome/gem_tools/tree/master">http://github.com/UnderpantsGnome/gem_tools/tree/master</a></li>
+	</ul>
+
+
+<pre>git clone git://github.com/UnderpantsGnome/gem_tools.git</pre>
+
+	<h3>Build and test instructions</h3>
+
+
+<pre>cd gem_tools
+rake test
+rake install_gem</pre>
+
+	<h2>License</h2>
+
+
+	<p>This code is free to use under the terms of the <span class="caps">MIT</span> license.</p>
+
+
+	<h2>Contact</h2>
+
+
+	<p>Comments are welcome. Send an email to <a href="mailto:michael@underpantsgnome.com">Michael Moen</a> via the <a href="http://groups.google.com/group/gem_tools">forum</a></p>
+    <p class="coda">
+      <a href="michael@underpantsgnome.com">FIXME full name</a>, 4th August 2008<br>
+      Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
+    </p>
+</div>
+
+<!-- insert site tracking codes here, like Google Urchin -->
+
+</body>
 </html>

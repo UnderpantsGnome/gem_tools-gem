@@ -1,17 +1,17 @@
-h2. GemTools
+== GemTools
 
 http://github.com/UnderpantsGnome/gem_tools-gem/wikis
 
-h3. DESCRIPTION:
+=== DESCRIPTION:
 
 The gem verison of my lightweight tool to manage gems using a config file, 
 similar to GemInstaller.
 
-h3. FEATURES/PROBLEMS:
+=== FEATURES/PROBLEMS:
 
 Doesn't yet work in Windows
 
-h3. SYNOPSIS:
+=== SYNOPSIS:
 
 I use this to manage gem versions in my apps, it has a rake task to install gems 
 and a load utility to load them on startup.
@@ -58,20 +58,20 @@ gem_command: 'jruby -S gem'
     :require_name: 'rfeedparser'
 </pre></code>
 
-h3. REQUIREMENTS:
+=== REQUIREMENTS:
 
 None
 
-h3. INSTALL:
+=== INSTALL:
 
 sudo gem install gem_tools
 
-h3. TODO
+=== TODO
 
 * Write the tests/specs
 * Make it work in Windows
 
-h3. LICENSE:
+=== LICENSE:
 
 (The MIT License)
 
