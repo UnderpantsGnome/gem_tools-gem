@@ -38,7 +38,7 @@ VERS = GemTools::VERSION::STRING + (REV ? ".#{REV}" : "")
 RDOC_OPTS = ['--quiet', '--title', 'gem_tools documentation',
     "--opname", "index.html",
     "--line-numbers",
-    "--main", "README",
+    "--main", "README.rdoc",
     "--inline-source"]
 
 class Hoe

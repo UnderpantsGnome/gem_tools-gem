@@ -1,17 +1,17 @@
-== GemTools
+= GemTools
 
 http://github.com/UnderpantsGnome/gem_tools-gem/wikis
 
-=== DESCRIPTION:
+== DESCRIPTION:
 
 The gem verison of my lightweight tool to manage gems using a config file, 
 similar to GemInstaller.
 
-=== FEATURES/PROBLEMS:
+== FEATURES/PROBLEMS:
 
 Doesn't yet work in Windows
 
-=== SYNOPSIS:
+== SYNOPSIS:
 
 I use this to manage gem versions in my apps, it has a rake task to install gems 
 and a load utility to load them on startup.
@@ -31,47 +31,47 @@ GemTools.load_gems
 The config file looks like
 <pre><code>
 # These are optional
-:source: http://local_mirror.example.com
+source: http://local_mirror.example.com
 gem_command: 'jruby -S gem'
-:gems:
-  - :name: mongrel
-    :version: "1.0"
+gems:
+  - name: mongrel
+    version: "1.0"
     # this gem has a specfic source URL
-    :source: 'http://mongrel.rubyforge.org/releases'
+    source: 'http://mongrel.rubyforge.org/releases'
 
-  - :name: hpricot_scrub
-    :version: '0.3.3'
+  - name: hpricot_scrub
+    version: '0.3.3'
     # this tells us to load not just install
-    :load: true 
+    load: true 
 
-  - :name: postgres
-    :version: '0.7.1'
-    :load: true
+  - name: postgres
+    version: '0.7.1'
+    load: true
     # any extra config that needs to be passed to gem install
-    :config: '--with-pgsql-include-dir=/usr/local/pgsql/include 
+    config: '--with-pgsql-include-dir=/usr/local/pgsql/include 
       --with-pgsql-lib-dir=/usr/local/pgsql/lib' 
 
-  - :name: rfeedparser_ictv
-    :version: '0.9.932'
-    :load: true
+  - name: rfeedparser_ictv
+    version: '0.9.932'
+    load: true
     # this one has a different load name than the gem name (not a normal need)
-    :require_name: 'rfeedparser'
+    require_name: 'rfeedparser'
 </pre></code>
 
-=== REQUIREMENTS:
+== REQUIREMENTS:
 
 None
 
-=== INSTALL:
+== INSTALL:
 
 sudo gem install gem_tools
 
-=== TODO
+== TODO
 
 * Write the tests/specs
 * Make it work in Windows
 
-=== LICENSE:
+== LICENSE:
 
 (The MIT License)
 

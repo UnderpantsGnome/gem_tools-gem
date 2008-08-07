@@ -4,3 +4,4 @@ PostInstall.txt
 README.txt
 lib/gem_tools.rb
 lib/gem_tools/version.rb
+bin/gemtools
