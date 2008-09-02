@@ -7,8 +7,10 @@ require File.dirname(__FILE__) + '/../lib/gem_tools'
 
 begin
   require 'rubygems'
-rescue LoadError
-  # no rubygems to load, so we fail silently
+rescue LoadError => e
+  puts e.to_s
+  puts "We can\"t install gems without rubygems"
+  exit 1
 end
 
 require 'optparse'
