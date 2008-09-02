@@ -38,10 +38,10 @@ BANNER
   opts.separator ""
   opts.on("-d", "--docs", String,
           "Install the rdocs and ri during install",
-          "Default: off") { |OPTIONS[:docs]| }
+          "Default: off") { |opts| OPTIONS[:docs] }
   opts.on("-f", "--force", String,
           "Force the install of the gems",
-          "Default: off") { |OPTIONS[:force]| }
+          "Default: off") { |opts| OPTIONS[:force] }
   opts.on("-h", "--help",
           "Show this help message") { puts opts; exit }
   opts.parse!(ARGV)
