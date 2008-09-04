@@ -13,12 +13,17 @@ Doesn't yet work in Windows
 
 == SYNOPSIS:
 
-I use this to manage gem versions in my apps, it has a rake task to install gems 
+I use this to manage gem versions in my apps, it has a script to install gems 
 and a load utility to load them on startup.
+
+create a gems.yml in a new project
+<pre><code>
+gemtools setup path/to/app
+</pre></code>
 
 Install or update required gems
 <pre><code>
-gem_tools install
+gemtools install
 </pre></code>
 
 Make sure they are loaded with the right versions during startup, by adding the 

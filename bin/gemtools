@@ -3,6 +3,7 @@
 #  Created on 2008-8-2.
 #  Copyright (c) 2008. All rights reserved.
 
+require 'optparse'
 require File.dirname(__FILE__) + '/../lib/gem_tools'
 
 begin
@@ -13,12 +14,9 @@ rescue LoadError => e
   exit 1
 end
 
-require 'optparse'
-
 command = ARGV.first
-
-OPTIONS = { }
-MANDATORY_OPTIONS = %w( )
+options = {}
+MANDATORY_OPTIONS = %w()
 
 parser = OptionParser.new do |opts|
   opts.banner = <<BANNER
@@ -37,22 +35,23 @@ Commands are:
 
 Options are:
 BANNER
+
   opts.separator ""
   opts.on("-d", "--docs", String,
           "Install the rdocs and ri during install",
-          "Default: off") { |opts| OPTIONS[:docs] }
+          "Default: off") { |opt| options[:docs] = opt }
   opts.on("-f", "--force", String,
           "Force the install of the gems",
-          "Default: off") { |opts| OPTIONS[:force] }
+          "Default: off") { |opt| options[:force] = opt }
   opts.on("-h", "--help",
           "Show this help message") { puts opts; exit }
   opts.parse!(ARGV)
 
-  if MANDATORY_OPTIONS && MANDATORY_OPTIONS.find { |option| OPTIONS[option.to_sym].nil? }
+  if MANDATORY_OPTIONS && MANDATORY_OPTIONS.find { |option| options[option.to_sym].nil? }
     puts opts; exit
   end
-  OPTS = opts
-end
+end.parse!
 
-# do stuff
+OPTIONS = options
+
 GemTools.run command

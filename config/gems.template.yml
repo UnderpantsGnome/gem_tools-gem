@@ -1,0 +1,16 @@
+# specify an alternate gems repository
+# source: http://local_mirror.example.com 
+# specify a different gem command
+# gem_command: 'jruby -S gem'
+gems:
+  # - name: postgres
+  # 	# the version to use
+  #   version: '0.7.1'
+  #   # use a specfic source URL
+  #   source: 'http://mongrel.rubyforge.org/releases'
+  #   # load with GemTools.load_gems
+  #   load: true 
+  #   # any extra config that needs to be passed to gem install
+  #   config: '--with-pgsql-include-dir=/usr/local/pgsql/include --with-pgsql-lib-dir=/usr/local/pgsql/lib' 
+  #   # require name is different than the gem name
+  #   require_name: foo-bar

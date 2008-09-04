@@ -8,6 +8,18 @@ module GemTools
     send(cmd.to_sym) rescue help
   end
 
+  def setup
+    require 'fileutils'
+    dest_file = File.join(ARGV[1], '/config/gems.yml')
+    if File.exist?(dest_file) && ! OPTIONS.has_key?(:force)
+      puts "#{dest_file} already exists.\n\ngemtools install #{ARGV[1]} --force\n\nto overwrite"
+      exit 1
+    else 
+      FileUtils.copy(File.join(File.dirname(__FILE__), '../config/gems.template.yml'), dest_file)
+      puts "#{dest_file} created"
+    end
+  end
+
   def load_gems
     config = load_config
     unless config['gems'].nil?

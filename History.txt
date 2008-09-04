@@ -1,4 +1,7 @@
 == 0.0.3 2008-09-02
+* Add a setup command to drop a gems.yml template in place
+
+== 0.0.3 2008-09-02
 * Fix the borked binary, not sure why this didn't show up previously
 
 == 0.0.2 2008-08-06
