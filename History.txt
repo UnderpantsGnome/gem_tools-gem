@@ -1,4 +1,7 @@
-== 0.0.3 2008-09-02
+== 0.0.5 2008-09-02
+* Fix the help message
+
+== 0.0.4 2008-09-02
 * Add a setup command to drop a gems.yml template in place
 
 == 0.0.3 2008-09-02

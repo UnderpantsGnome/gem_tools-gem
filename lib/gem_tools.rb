@@ -36,7 +36,7 @@ module GemTools
   end
 
   def help
-    puts OPTS
+    puts OPTIONS
   end
 
   def load_config
