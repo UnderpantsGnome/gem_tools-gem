@@ -1,3 +1,8 @@
+== 0.0.6 2008-09-26
+* Fix the setup routine
+* Add the missing gems.template.yml to the manifest
+* Handle a missing gems.yml better
+
 == 0.0.5 2008-09-02
 * Fix the help message
 
@@ -8,10 +13,8 @@
 * Fix the borked binary, not sure why this didn't show up previously
 
 == 0.0.2 2008-08-06
-
 * Add the bin files to the gem...:
 
 == 0.0.1 2008-08-01
-
 * Ported Rails plugin to a Gem:
   * Initial release

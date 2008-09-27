@@ -33,6 +33,8 @@ Commands are:
     dryrun 
     Print out the commands that would have been run
 
+    setup
+    generate a started gems.yml
 Options are:
 BANNER
 
@@ -50,8 +52,8 @@ BANNER
   if MANDATORY_OPTIONS && MANDATORY_OPTIONS.find { |option| options[option.to_sym].nil? }
     puts opts; exit
   end
-end.parse!
 
-OPTIONS = options
+  OPTIONS = opts
+end.parse!
 
 GemTools.run command

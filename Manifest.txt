@@ -5,3 +5,4 @@ README.txt
 lib/gem_tools.rb
 lib/gem_tools/version.rb
 bin/gemtools
+config/gems.template.yml

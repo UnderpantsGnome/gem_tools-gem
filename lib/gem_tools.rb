@@ -5,7 +5,7 @@ module GemTools
   extend self
   
   def run(cmd)
-    send(cmd.to_sym) rescue help
+    send(cmd.to_sym)# rescue help
   end
 
   def setup
@@ -43,7 +43,10 @@ module GemTools
     require 'yaml'
     require 'erb'
     config_file = find_config
-    raise 'Could not find a gems.yml, checked . and ./config' unless File.exist?(config_file)
+    unless config_file
+      puts 'Could not find a gems.yml, checked . and ./config'
+      exit 1
+    end
     YAML.load(ERB.new(File.open(config_file).read).result)
   end
 
@@ -117,6 +120,7 @@ module GemTools
       config_file = File.join(dir, 'gems.yml')
       return config_file if File.exist?(config_file)
     end
+    nil
   end
 end
   
