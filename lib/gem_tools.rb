@@ -3,7 +3,7 @@ $:.unshift(File.dirname(__FILE__)) unless
 
 module GemTools
   extend self
-  
+
   def run(cmd)
     send(cmd.to_sym)# rescue help
   end
@@ -14,7 +14,7 @@ module GemTools
     if File.exist?(dest_file) && ! OPTIONS.has_key?(:force)
       puts "#{dest_file} already exists.\n\ngemtools install #{ARGV[1]} --force\n\nto overwrite"
       exit 1
-    else 
+    else
       FileUtils.copy(File.join(File.dirname(__FILE__), '../config/gems.template.yml'), dest_file)
       puts "#{dest_file} created"
     end
@@ -25,7 +25,7 @@ module GemTools
     unless config['gems'].nil?
       gems = config['gems'].reject {|gem_info| ! gem_info['load'] }
       gems.each do |gem_info|
-        if defined?(Kernel::gem)
+        if defined?(gem)
           gem gem_info['name'], gem_info['version']
         else
           require_gem gem_info['name'], gem_info['version']
@@ -64,7 +64,7 @@ module GemTools
       end
     end
   end
-  
+
   def dryrun
     puts "\n#{commands.join("\n")}\n\n"
   end
@@ -85,7 +85,7 @@ module GemTools
       gem_dash_y = "1.0" > Gem::RubyGemsVersion ? '-y' : ''
 
       gems.each do |gem|
-        spec, loaded, version = check_gem(gem['name'], gem['version'])
+        spec, loaded, version = check_gem(gem_command, gem['name'], gem['version'])
         # if forced
         # or the spec version doesn't match the required version
         # or require_gem returns false
@@ -103,9 +103,9 @@ module GemTools
     end
     commands
   end
-  
-  def check_gem(name, version='')
-    spec = YAML.load(`gem spec #{name} 2> /dev/null`)
+
+  def check_gem(command, name, version='')
+    spec = YAML.load(`#{command} spec #{name} 2> /dev/null`)
     loaded = false
     begin
       loaded = require_gem name, version
@@ -114,7 +114,7 @@ module GemTools
     end
     [spec, loaded, version]
   end
-  
+
   def find_config
     %w( . config ).each do |dir|
       config_file = File.join(dir, 'gems.yml')
@@ -123,4 +123,3 @@ module GemTools
     nil
   end
 end
-  

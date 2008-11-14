@@ -1,4 +1,8 @@
-== 0.0.6 2008-09-30
+== 0.0.8 2008-11-14
+* Fix the check for Kernel::gem
+* Make sure to use the right gem command when checking gems
+
+== 0.0.7 2008-09-30
 * no more coding when tired
 
 == 0.0.6 2008-09-26
