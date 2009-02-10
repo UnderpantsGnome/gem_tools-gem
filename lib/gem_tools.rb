@@ -90,7 +90,7 @@ module GemTools
         # or the spec version doesn't match the required version
         # or require_gem returns false
         #    (return false also happens if the gem has already been loaded)
-        if OPTIONS.has_key?(:force) || !spec || (! loaded && version != gem['version'])
+        if OPTIONS.has_key?(:force) || !spec || (! loaded || version != gem['version'])
           gem_config = gem['config'] ? " -- #{gem['config']}" : ''
           source = gem['source'] || config['source'] || nil
           source = "--source #{source}" if source
@@ -108,7 +108,7 @@ module GemTools
     spec = YAML.load(`#{command} spec #{name} 2> /dev/null`)
     loaded = false
     begin
-      loaded = require_gem name, version
+      loaded = defined?(gem) ? gem(name, version) : require_gem(name, version)
       version = spec.version.version
     rescue Exception
     end

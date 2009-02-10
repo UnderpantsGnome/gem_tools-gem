@@ -1,3 +1,6 @@
+== 0.0.9 2009-02-10
+* Fix the a bug in the loaded detection logic
+
 == 0.0.8 2008-11-14
 * Fix the check for Kernel::gem
 * Make sure to use the right gem command when checking gems
