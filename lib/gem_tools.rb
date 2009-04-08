@@ -77,8 +77,8 @@ module GemTools
     unless gems.nil?
       docs = ''
       unless OPTIONS.has_key?(:docs)
-        docs << '--no-rdoc ' unless (`rdoc -v`).nil?
-        docs << '--no-ri ' unless (`ri -v`).nil?
+        docs << '--no-rdoc ' unless (`rdoc --version`).nil?
+        docs << '--no-ri ' unless (`ri --version`).nil?
       end
 
       gem_command = config['gem_command'] || 'gem'
