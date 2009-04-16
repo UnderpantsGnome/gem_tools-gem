@@ -5,7 +5,7 @@ module GemTools
   extend self
 
   def run(cmd)
-    send(cmd.to_sym)# rescue help
+    send(cmd.to_sym) rescue help
   end
 
   def setup
@@ -121,5 +121,16 @@ module GemTools
       return config_file if File.exist?(config_file)
     end
     nil
+  end
+
+  def check_updates
+    config = load_config
+    gems = config['gems']
+
+    gems.each do |gem|
+      out = `gem list -r #{gem['name']}`
+      ver = out.match(/\(([0-9\.]+)\)/)[1] rescue 0
+      puts "#{gem['name']} #{ver} is available." if ver > gem['version']
+    end
   end
 end

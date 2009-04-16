@@ -1,3 +1,7 @@
+== 0.2.0 2009-04-16
+* Added the check_updates command
+* Fixed the broken docs
+
 == 0.1.0 2009-04-08
 * change the rdoc and ri detection to not spew errors with rdoc 2
 

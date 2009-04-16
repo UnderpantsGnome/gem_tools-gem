@@ -20,7 +20,7 @@ MANDATORY_OPTIONS = %w()
 
 parser = OptionParser.new do |opts|
   opts.banner = <<BANNER
-GemTools can be used to make sure you have the propper gems and versions for 
+GemTools can be used to make sure you have the propper gems and versions for
 your app installed. It handles installing and loading gems during runtime.
 
 Usage: #{File.basename($0)} command [options]
@@ -30,11 +30,15 @@ Commands are:
     install
     Install the gems in ./gems.yml or ./config/gems.yml
 
-    dryrun 
+    dryrun
     Print out the commands that would have been run
 
     setup
-    generate a started gems.yml
+    Generate a starter gems.yml
+
+    check_updates
+    Checks to see if there are newer versions available for the gems
+
 Options are:
 BANNER
 
@@ -53,7 +57,7 @@ BANNER
     puts opts; exit
   end
 
-  OPTIONS = options
+  OPTIONS = opts
 end.parse!
 
 GemTools.run command
