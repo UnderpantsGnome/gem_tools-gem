@@ -11,7 +11,7 @@ module GemTools
   def setup
     require 'fileutils'
     dest_file = File.join(ARGV[1], '/config/gems.yml')
-    if File.exist?(dest_file) && ! OPTIONS.has_key?(:force)
+    if File.exist?(dest_file) && ! OPTS.has_key?(:force)
       puts "#{dest_file} already exists.\n\ngemtools install #{ARGV[1]} --force\n\nto overwrite"
       exit 1
     else
@@ -76,7 +76,7 @@ module GemTools
 
     unless gems.nil?
       docs = ''
-      unless OPTIONS.has_key?(:docs)
+      unless OPTS.has_key?(:docs)
         docs << '--no-rdoc ' unless (`rdoc --version`).nil?
         docs << '--no-ri ' unless (`ri --version`).nil?
       end
@@ -90,7 +90,7 @@ module GemTools
         # or the spec version doesn't match the required version
         # or require_gem returns false
         #    (return false also happens if the gem has already been loaded)
-        if OPTIONS.has_key?(:force) || !spec || (! loaded || version != gem['version'])
+        if OPTS.has_key?(:force) || !spec || (! loaded || version != gem['version'])
           gem_config = gem['config'] ? " -- #{gem['config']}" : ''
           source = gem['source'] || config['source'] || nil
           source = "--source #{source}" if source

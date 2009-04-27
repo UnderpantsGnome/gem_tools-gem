@@ -57,7 +57,8 @@ BANNER
     puts opts; exit
   end
 
-  OPTIONS = opts
+  OPTS = opts
+  OPTIONS = options
 end.parse!
 
 GemTools.run command
