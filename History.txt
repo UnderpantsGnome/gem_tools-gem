@@ -1,4 +1,7 @@
 == 0.2.0 2009-04-27
+* Fixed the broken refs to opts as a Hash, no really this time. Thanks cohesive
+
+== 0.2.0 2009-04-27
 * Fixed the broken refs to opts as a Hash
 
 == 0.2.0 2009-04-16
