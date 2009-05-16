@@ -26,7 +26,7 @@ h3. Install or update required gems
   
 h3. Check to see if any of the gems in your app have newer versions
 
-  gemtools check_update
+  gemtools check_updates
 
 Make sure they are loaded with the right versions during startup, by adding the 
 following to your script or environment.rb (Rails)
