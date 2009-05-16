@@ -1,82 +1,52 @@
-= GemTools
+h1. GemTools
 
-http://github.com/UnderpantsGnome/gem_tools-gem/wikis
-
-== DESCRIPTION:
+h2. DESCRIPTION:
 
 The gem verison of my lightweight tool to manage gems using a config file, 
 similar to GemInstaller.
 
-== FEATURES/PROBLEMS:
+My blog post on why "I prefer GemTools over config:gem":http://underpantsgnome.com/2009/4/8/i-prefer-gemtools-over-config-gem
+
+h2.  FEATURES/PROBLEMS:
 
 Doesn't yet work in Windows
 
-== SYNOPSIS:
+h2.  SYNOPSIS:
 
 I use this to manage gem versions in my apps, it has a script to install gems 
 and a load utility to load them on startup.
 
-create a gems.yml in a new project
-<pre><code>
-gemtools setup path/to/app
-</pre></code>
+h3. create a gems.yml in a new project
 
-Install or update required gems
-<pre><code>
-gemtools install
-</pre></code>
+  gemtools setup path/to/app
+
+h3. Install or update required gems
+
+  gemtools install
+  
+h3. Check to see if any of the gems in your app have newer versions
+
+  gemtools check_update
 
 Make sure they are loaded with the right versions during startup, by adding the 
 following to your script or environment.rb (Rails)
-<pre><code>
-require 'gem_tools'
-GemTools.load_gems
-</pre></code>
 
-The config file looks like
-<pre><code>
-# These are optional
-source: http://local_mirror.example.com
-gem_command: 'jruby -S gem'
-gems:
-  - name: mongrel
-    version: "1.0"
-    # this gem has a specfic source URL
-    source: 'http://mongrel.rubyforge.org/releases'
+  require 'gem_tools'
+  GemTools.load_gems
 
-  - name: hpricot_scrub
-    version: '0.3.3'
-    # this tells us to load not just install
-    load: true 
 
-  - name: postgres
-    version: '0.7.1'
-    load: true
-    # any extra config that needs to be passed to gem install
-    config: '--with-pgsql-include-dir=/usr/local/pgsql/include 
-      --with-pgsql-lib-dir=/usr/local/pgsql/lib' 
+See the "sample config":http://github.com/UnderpantsGnome/gem_tools/blob/master/gems.yml.sample for the format
 
-  - name: rfeedparser_ictv
-    version: '0.9.932'
-    load: true
-    # this one has a different load name than the gem name (not a normal need)
-    require_name: 'rfeedparser'
-</pre></code>
+h2.  INSTALL:
 
-== REQUIREMENTS:
+  sudo gem install gem_tools
 
-None
+h2.  TODO
 
-== INSTALL:
+  * Write the tests/specs
+  * Make it work in Windows
 
-sudo gem install gem_tools
-
-== TODO
-
-* Write the tests/specs
-* Make it work in Windows
-
-== LICENSE:
+h2.  LICENSE:
 
 (The MIT License)
 
