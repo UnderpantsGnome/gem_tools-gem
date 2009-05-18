@@ -1,3 +1,7 @@
+== 0.2.3 2009-05-18
+* add STDERR redirection for the rdoc and ri checks, throwing funky errors when
+  there is no TTY
+
 == 0.2.0 2009-04-27
 * Fixed the broken refs to opts as a Hash, no really this time. Thanks cohesive
 

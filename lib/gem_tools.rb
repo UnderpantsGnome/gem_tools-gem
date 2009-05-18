@@ -1,6 +1,8 @@
 $:.unshift(File.dirname(__FILE__)) unless
   $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
+require 'gem_tools/version'
+
 module GemTools
   extend self
 
@@ -77,8 +79,8 @@ module GemTools
     unless gems.nil?
       docs = ''
       unless OPTIONS.has_key?(:docs)
-        docs << '--no-rdoc ' unless (`rdoc --version`).nil?
-        docs << '--no-ri ' unless (`ri --version`).nil?
+        docs << '--no-rdoc ' unless (`rdoc --version 2> /dev/null`).nil?
+        docs << '--no-ri ' unless (`ri --version 2> /dev/null`).nil?
       end
 
       gem_command = config['gem_command'] || 'gem'

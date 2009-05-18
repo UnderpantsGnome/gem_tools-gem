@@ -51,6 +51,11 @@ BANNER
           "Default: off") { |opt| options[:force] = opt }
   opts.on("-h", "--help",
           "Show this help message") { puts opts; exit }
+  opts.on("-v", "--version",
+          "Display the version") {
+            puts "#{File.basename($0)} #{GemTools::VERSION::STRING}"
+            exit
+          }
   opts.parse!(ARGV)
 
   if MANDATORY_OPTIONS && MANDATORY_OPTIONS.find { |option| options[option.to_sym].nil? }
