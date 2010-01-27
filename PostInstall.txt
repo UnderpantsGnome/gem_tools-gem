@@ -1,2 +1,0 @@
-
-For more information on GemTools see http://github.com/UnderpantsGnome/gem_tools/wikis

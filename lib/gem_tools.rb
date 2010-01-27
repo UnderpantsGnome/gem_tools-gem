@@ -1,8 +1,6 @@
 $:.unshift(File.dirname(__FILE__)) unless
   $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
-require 'gem_tools/version'
-
 module GemTools
   extend self
 
@@ -107,12 +105,15 @@ module GemTools
   end
 
   def check_gem(command, name, version='')
-    spec = YAML.load(`#{command} spec #{name} 2> /dev/null`)
+    ENV['PATH'] ||= '/usr/bin'
+    ENV['PATH'] += ':/usr/local/bin:/usr/bin'
+    spec = YAML.load(`PATH=#{ENV['PATH']} #{command} spec #{name} 2> /dev/null`)
     loaded = false
     begin
       loaded = defined?(gem) ? gem(name, version) : require_gem(name, version)
       version = spec.version.version
-    rescue Exception
+    rescue Exception => e
+      # puts e
     end
     [spec, loaded, version]
   end
@@ -125,14 +126,22 @@ module GemTools
     nil
   end
 
+  def has_gem?(gem)
+    @gems ||= Gem::SourceIndex.from_installed_gems
+    @gems.search(gem['name'], gem['version']).empty?
+  end
+
   def check_updates
     config = load_config
     gems = config['gems']
 
     gems.each do |gem|
-      out = `gem list -r #{gem['name']}`
-      ver = out.match(/\(([0-9\.]+)\)/)[1] rescue 0
-      puts "#{gem['name']} #{ver} is available." if ver > gem['version']
+      source = gem['source'] || config['source'] || nil
+      source = "--source #{source}" if source
+      # puts "Checking #{gem['name']}"
+      out = `gem list -r #{gem['name']} #{source}`
+      ver = out.match(/\(([0-9\.]+)/)[1] #rescue 0
+      puts "#{gem['name']} #{ver} is available, #{gem['version']} installed" if ver > gem['version']
     end
   end
 end
