@@ -1,3 +1,7 @@
+== 0.2.4 2010-01-27
+* move to jeweler for packaging
+  fix error when checking for updated gems
+
 == 0.2.3 2009-05-18
 * add STDERR redirection for the rdoc and ri checks, throwing funky errors when
   there is no TTY
