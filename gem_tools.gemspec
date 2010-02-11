@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{gem_tools}
-  s.version = "0.2.4"
+  s.version = "0.2.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Michael Moen"]
-  s.date = %q{2010-01-27}
+  s.date = %q{2010-02-11}
   s.default_executable = %q{gemtools}
   s.description = %q{A lightweight tool to manage gems using a config file, similar to GemInstaller}
   s.email = %q{michael@underpantsgnome.com}
