@@ -28,6 +28,11 @@ h3. Check to see if any of the gems in your app have newer versions
 
   gemtools check_updates
 
+h3. Generate a Gemfile from your current gems.yml
+
+  gemtools to_gemfile
+  
+
 Make sure they are loaded with the right versions during startup, by adding the 
 following to your script or environment.rb (Rails)
 

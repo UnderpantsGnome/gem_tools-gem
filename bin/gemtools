@@ -38,6 +38,9 @@ Commands are:
 
     check_updates
     Checks to see if there are newer versions available for the gems
+    
+    to_gemfile
+    Generate a Gemfile from your current gems.yml
 
 Options are:
 BANNER

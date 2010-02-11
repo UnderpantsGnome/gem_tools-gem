@@ -1,6 +1,9 @@
 $:.unshift(File.dirname(__FILE__)) unless
   $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
+require 'rubygems'
+require 'ruby-debug'
+
 module GemTools
   extend self
 
@@ -37,6 +40,41 @@ module GemTools
 
   def help
     puts OPTS
+  end
+
+  def to_gemfile
+    config = load_config
+    
+    if File.exist?('Gemfile')
+      puts "GemFile already exists, not overwriting."
+      exit 1
+    end
+
+    no_load = config['gems'].collect { |gem| gem if gem['load'] == false }.compact
+    to_load = config['gems'].collect { |gem| gem unless gem['load'] == false }.compact
+
+    File.open('Gemfile', 'w+') do |f|
+      if config['source']
+        f.puts "source #{config['source']}"
+      else
+        f.puts "source :gemcutter"
+        f.puts "source 'http://gems.github.com/'"
+      end
+
+      f.puts ''
+
+      to_load.each do |gem|
+        f.puts bundler_gem_line(gem)
+      end
+
+      f.puts ''
+
+      f.puts 'group :no_load do'
+      no_load.each do |gem|
+        f.puts '  ' + bundler_gem_line(gem)
+      end
+      f.puts 'end'
+    end
   end
 
   def load_config
@@ -144,4 +182,12 @@ module GemTools
       puts "#{gem['name']} #{ver} is available, #{gem['version']} installed" if ver > gem['version']
     end
   end
+  
+  private
+    
+    def bundler_gem_line(gem)
+      line = "gem '#{gem['name']}', '#{gem['version']}'"
+      line += ", :require => '#{gem['require_name']}'" if gem['require_name']
+      line
+    end
 end

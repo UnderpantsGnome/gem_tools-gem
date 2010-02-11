@@ -1,3 +1,6 @@
+== 0.2.5 2010-01-27
+* add an option to generate a Gemfile
+
 == 0.2.4 2010-01-27
 * move to jeweler for packaging
   fix error when checking for updated gems

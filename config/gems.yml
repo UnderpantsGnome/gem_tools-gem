@@ -1,21 +1,164 @@
-# this is optional
-# source: http://local_mirror.example.com 
-# gem_command: 'jruby -S gem'
 gems:
-  - name: rake
-    load: true
-    version: 0.7.3
-  - name: foo_gem
-    version: 0.0.1
-    load: true
-  # - name: postgres
-  # 	# the version to use
-  #   version: '0.7.1'
-  #   # this gem has a specfic source URL
-  #   source: 'http://mongrel.rubyforge.org/releases'
-  #   # this tells us to load not just install
-  #   load: true 
-  #   # any extra config that needs to be passed to gem install
-  #   config: '--with-pgsql-include-dir=/usr/local/pgsql/include --with-pgsql-lib-dir=/usr/local/pgsql/lib' 
-  #   # if the require name is different than the gem name
-  #   require_name: foo-bar
+  - name: 'authlogic'
+    version: '1.3.9'
+
+  - name: 'datanoise-actionwebservice'
+    version: '2.2.2'
+    require_name: 'actionwebservice'
+    source: 'http://gems.github.com/'
+
+  - name: 'fastercsv'
+    version: '1.5.0'
+
+  - name: 'GData'
+    version: '0.0.4'
+    require_name: 'gdata/spreadsheet'
+
+  - name: 'hpricot'
+    version: '0.8.2'
+
+  - name: 'httparty'
+    version: '0.5.0'
+
+  - name: 'newrelic_rpm'
+    version: '2.9.5'
+
+  - name: 'parseexcel'
+    version: '0.5.2'
+
+  - name: 'prawn'
+    version: '0.5.0.1'
+
+  - name: 'prawn-core'
+    version: '0.5.0.1'
+
+  - name: 'prawn-layout'
+    version: '0.2.0.1'
+
+  - name: 'rails'
+    version: '2.2.2'
+
+  - name: 'roo'
+    version: '1.2.3'
+
+  - name: 'rubaidh-google_analytics'
+    version: '1.1.4'
+    require_name: 'rubaidh/google_analytics'
+    source: 'http://gems.github.com/'
+
+  - name: 'aasm'
+    version: '2.0.5'
+
+  - name: 'rubyzip'
+    version: '0.9.1'
+    require_name: 'zip/zipfilesystem'
+
+  - name: 'serviceproxy'
+    version: '0.2.1'
+
+  - name: 'settingslogic'
+    version: '2.0.3'
+
+  - name: 'spreadsheet-excel'
+    version: '0.3.5.1'
+    require_name: 'spreadsheet/excel'
+
+  - name: 'thoughtbot-paperclip'
+    version: '2.2.7'
+    require_name: 'paperclip'
+
+  - name: 'will_paginate'
+    version: '2.2.2'
+
+  - name: 'inaction_mailer'
+    version: '0.6'
+    load: false
+
+  - name: 'capistrano-ext'
+    version: '1.2.1'
+    load: false
+
+  - name: 'chronic'
+    version: '0.2.3'
+    load: false
+
+  - name: 'whenever'
+    version: '0.3.7'
+    load: false
+
+  - name: 'soap4r'
+    version: '1.5.8'
+    load: false
+
+  - name: 'crack'
+    version: '0.1.4'
+    load: false
+
+  - name: 'ruby-debug'
+    version: '0.10.3'
+    load: false
+
+  - name: 'cucumber'
+    version: '0.6.2'
+    load: false
+
+  - name: 'cucumber-rails'
+    version: '0.2.4'
+    load: false
+
+  - name: 'database_cleaner'
+    version: '0.4.3'
+    load: false
+
+  - name: 'webrat'
+    version: '0.7.0'
+    load: false
+
+  - name: 'rspec'
+    version: '1.3.0'
+    load: false
+
+  - name: 'rspec-rails'
+    version: '1.3.2'
+    load: false
+
+  - name: 'launchy'
+    version: '0.3.5'
+    load: false
+
+  - name: 'mocha'
+    version: '0.9.5'
+    load: false
+
+  - name: 'machinist'
+    version: '1.0.6'
+    load: false
+
+  - name: 'shoulda'
+    version: '2.9.1'
+    load: false
+
+  - name: 'xml-simple'
+    version: '1.0.12'
+    load: false
+
+  - name: 'memcache'
+    version: '1.2.0'
+    load: false
+
+  - name: 'tzinfo'
+    version: '0.3.16'
+    load: false
+
+  - name: 'tmail'
+    version: '1.2.7.1'
+    load: false
+
+  - name: 'text-format'
+    version: '1.0.0'
+    load: false
+
+  - name: 'cwninja-inaction_mailer'
+    version: '0.6'
+    require_name: 'inaction_mailer'
+    load: false
