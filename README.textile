@@ -7,10 +7,6 @@ similar to GemInstaller.
 
 My blog post on why "I prefer GemTools over config:gem":http://underpantsgnome.com/2009/4/8/i-prefer-gemtools-over-config-gem
 
-h2.  FEATURES/PROBLEMS:
-
-Doesn't yet work in Windows
-
 h2.  SYNOPSIS:
 
 I use this to manage gem versions in my apps, it has a script to install gems 
@@ -44,7 +40,7 @@ See the "sample config":http://github.com/UnderpantsGnome/gem_tools/blob/master/
 
 h2.  INSTALL:
 
-  sudo gem install gem_tools
+  [sudo] gem install gem_tools
 
 h2.  TODO
 
