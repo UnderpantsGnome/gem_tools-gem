@@ -2,7 +2,6 @@ $:.unshift(File.dirname(__FILE__)) unless
   $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
 require 'rubygems'
-require 'ruby-debug'
 
 module GemTools
   extend self
@@ -109,7 +108,7 @@ module GemTools
 
       unless gems.nil?
         docs = ''
-        unless OPTIONS.has_key?(:docs)
+        unless OPTIONS.has_key?(:docs) || RUBY_PLATFORM =~ /(win|mingw)/i
           docs << '--no-rdoc ' unless (`rdoc --version 2> /dev/null`).nil?
           docs << '--no-ri ' unless (`ri --version 2> /dev/null`).nil?
         end
