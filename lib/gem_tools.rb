@@ -73,22 +73,22 @@ module GemTools
     end
   end
 
-  private
-
-    def load_gems
-      config = load_config
-      unless config['gems'].nil?
-        gems = config['gems'].reject {|gem_info| ! gem_info['load'] }
-        gems.each do |gem_info|
-          if defined?(gem)
-            gem gem_info['name'], gem_info['version']
-          else
-            require_gem gem_info['name'], gem_info['version']
-          end
-          require gem_info['require_name'] || gem_info['name']
+  def load_gems
+    config = load_config
+    unless config['gems'].nil?
+      gems = config['gems'].reject {|gem_info| ! gem_info['load'] }
+      gems.each do |gem_info|
+        if defined?(gem)
+          gem gem_info['name'], gem_info['version']
+        else
+          require_gem gem_info['name'], gem_info['version']
         end
+        require gem_info['require_name'] || gem_info['name']
       end
     end
+  end
+
+  private
 
     def load_config
       require 'yaml'
