@@ -28,6 +28,7 @@ module GemTools
 
   def install
     commands.each do |command|
+      puts "\nrunning: #{command}"
       ret = system command
       # something bad happened, pass on the message
       p $? unless ret
@@ -108,7 +109,7 @@ module GemTools
 
       unless gems.nil?
         docs = ''
-        unless OPTIONS.has_key?(:docs) || RUBY_PLATFORM =~ /(win|mingw)/i
+        unless OPTIONS.has_key?(:docs) || RUBY_PLATFORM =~ /(mswin|mingw)/i
           docs << '--no-rdoc ' unless (`rdoc --version 2> /dev/null`).nil?
           docs << '--no-ri ' unless (`ri --version 2> /dev/null`).nil?
         end

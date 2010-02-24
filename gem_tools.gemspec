@@ -5,25 +5,23 @@
 
 Gem::Specification.new do |s|
   s.name = %q{gem_tools}
-  s.version = "0.2.7"
+  s.version = "0.2.8"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Michael Moen"]
-  s.date = %q{2010-02-21}
+  s.date = %q{2010-02-24}
   s.default_executable = %q{gemtools}
   s.description = %q{A lightweight tool to manage gems using a config file, similar to GemInstaller}
   s.email = %q{michael@underpantsgnome.com}
   s.executables = ["gemtools"]
   s.extra_rdoc_files = [
-    "README.textile",
-     "README.txt"
+    "README.textile"
   ]
   s.files = [
     ".gitignore",
      "History.txt",
      "License.txt",
      "README.textile",
-     "README.txt",
      "Rakefile",
      "VERSION",
      "bin/gemtools",
@@ -38,7 +36,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/UnderpantsGnome/gem_tools-gem}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{A gem manager}
   s.test_files = [
     "spec/gem_tools_spec.rb",

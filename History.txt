@@ -1,3 +1,6 @@
+== 0.2.8 2010-02-24
+* fix boneheaded search for windows, since it catches Darwin, duh
+
 == 0.2.7 2010-02-21
 * fix load_gems
 
